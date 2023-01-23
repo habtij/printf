@@ -51,6 +51,7 @@ int _printf(const char *format, ...)
 					_putchar('%');
 					continue;
 			}
+			break;
 		case '\n':
 			_putchar('\n');
 			continue;
