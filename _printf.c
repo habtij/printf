@@ -2,6 +2,22 @@
 #include <stdarg.h>
 
 /**
+ * print_string - iterate and write character to standard stdout
+ * @s: string argument
+ *
+ * Return: nothing
+ */
+void print_string(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		_putchar(s[i]);
+	}
+}
+
+/**
  * _printf - a function that prints anything
  * @format: variadic argument
  *
