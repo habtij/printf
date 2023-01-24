@@ -18,7 +18,7 @@ int binary(unsigned int num)
 		num /= 2;
 	}
 
-	
+
 	for (j = (i - 1); j > 0; j--)
 	{
 		_putchar(bin[j] + '0');
@@ -32,4 +32,4 @@ int binary(unsigned int num)
 	}
 
 	return (i);
-}	
+}
