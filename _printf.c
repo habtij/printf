@@ -48,6 +48,7 @@ int check_format(va_list arg, char fmt)
 {
 	char c_val;
 	char *s_val;
+	unsigned int dec_to_bin;
 	int count = 0;
 
 	switch (fmt)
@@ -63,6 +64,10 @@ int check_format(va_list arg, char fmt)
 		if (_strlen(s_val) != -1)
 			count += _strlen(s_val);
 
+		break;
+	case 'b':
+		dec_to_bin = va_arg(arg, int);
+		count += binary(dec_to_bin);
 		break;
 	case '%':
 		_putchar('%');
@@ -84,26 +89,28 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0;
 
-	if (format != NULL)
+	if (format == NULL)
+		return (-1);
+
+	va_start(args, format);
+
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		va_start(args, format);
-		for (i = 0; format[i] != '\0'; i++)
+		switch (format[i])
 		{
-			switch (format[i])
-			{
-			case '%':
-				i++;
-				count += check_format(args, format[i]);
-				continue;
-			case '\n':
-				_putchar('\n');
-				count++;
-				continue;
-			}
-			_putchar(format[i]);
+		case '%':
+			i++;
+			count += check_format(args, format[i]);
+			continue;
+		case '\n':
+			_putchar('\n');
 			count++;
+			continue;
 		}
-		va_end(args);
+		
+		_putchar(format[i]);
+		count++;
 	}
+	va_end(args);
 	return (count);
 }
