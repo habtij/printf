@@ -84,23 +84,26 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0;
 
-	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	if (format != NULL)
 	{
-		switch (format[i])
+		va_start(args, format);
+		for (i = 0; format[i] != '\0'; i++)
 		{
-		case '%':
-			i++;
-			count += check_format(args, format[i]);
-			continue;
-		case '\n':
-			_putchar('\n');
+			switch (format[i])
+			{
+			case '%':
+				i++;
+				count += check_format(args, format[i]);
+				continue;
+			case '\n':
+				_putchar('\n');
+				count++;
+				continue;
+			}
+			_putchar(format[i]);
 			count++;
-			continue;
 		}
-		_putchar(format[i]);
-		count++;
+		va_end(args);
 	}
-	va_end(args);
 	return (count);
 }
