@@ -48,7 +48,7 @@ int check_format(va_list arg, char fmt)
 {
 	char c_val;
 	char *s_val;
-	int count = 0;
+	int count = 0, int_n;
 
 	switch (fmt)
 	{
@@ -63,6 +63,10 @@ int check_format(va_list arg, char fmt)
 		if (_strlen(s_val) != -1)
 			count += _strlen(s_val);
 
+		break;
+	case 'd':
+		int_n = va_arg(arg, int);
+		count += print_decimal(int_n);
 		break;
 	case '%':
 		_putchar('%');
@@ -101,13 +105,15 @@ int _printf(const char *format, ...)
 			_putchar('\n');
 			count++;
 			continue;
+		case '\t':
+			_putchar('\t');
+			count++;
+			continue;
 		}
 		
 		_putchar(format[i]);
 		count++;
 	}
-
-		va_end(args);
-	}
+	va_end(args);
 	return (count);
 }

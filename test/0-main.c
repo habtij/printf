@@ -13,7 +13,8 @@ int main()
 	char *s = "Hello World!";
 	int len, len1;
 
-	printf("%5c\n", c);
+	printf(NULL);
+	_printf(NULL);
 	len = _printf("This is a char c: %c%%\n", c);
 	len1 = printf("This is a char c: %c%%\n", c);
 	printf("%d\n", len);
