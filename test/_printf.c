@@ -48,7 +48,8 @@ int check_format(va_list arg, char fmt)
 {
 	char c_val;
 	char *s_val;
-	int count = 0, int_n;
+	unsigned int dec_to_bin;
+	int count = 0;
 
 	switch (fmt)
 	{
@@ -64,9 +65,9 @@ int check_format(va_list arg, char fmt)
 			count += _strlen(s_val);
 
 		break;
-	case 'd':
-		int_n = va_arg(arg, int);
-		count += print_decimal(int_n);
+	case 'b':
+		dec_to_bin = va_arg(arg, int);
+		count += binary(dec_to_bin);
 		break;
 	case '%':
 		_putchar('%');

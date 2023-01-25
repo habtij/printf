@@ -9,14 +9,14 @@
  */
 int main()
 {
-	char c = 'a';
+	int c = 100;
+	unsigned int num = 98;
 	char *s = "Hello World!";
 	int len, len1;
 
-	printf(NULL);
-	_printf(NULL);
-	len = _printf("This is a char c: %c%%\n", c);
-	len1 = printf("This is a char c: %c%%\n", c);
+	printf("%5c\n", c);
+	len = _printf("This is a char c: %b%%\n", num);
+	len1 = printf("This is a char c: %d%%\n", num);
 	printf("%d\n", len);
 	printf("%d\n", len1);
 	len = _printf("This is a string s: %s\n", s);

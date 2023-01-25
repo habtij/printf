@@ -1,2 +1,2 @@
-# 0x11. C - printf
-A custom printf function
+0x11. C - printf team project
+
